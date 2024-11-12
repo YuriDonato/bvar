@@ -99,7 +99,7 @@ bv_ml <- function(
   ev_full <- calc_ev(omega_inv = omega_inv, omega_sqrt = omega_sqrt,
     psi_inv = psi_inv, X = X, XX = XX, Y = Y, b = b, beta_hat = TRUE)
   log_ml <- calc_logml(M = M, N = N, psi = psi,
-    omega_ml_ev = ev_full[["omega"]], psi_ml_ev = ev_full[["psi"]])
+    omega_ldet = ev_full[["omega"]], psi_ldet = ev_full[["psi"]])
 
   # Add priors
   log_ml <- log_ml + sum(vapply(
@@ -123,7 +123,7 @@ bv_ml <- function(
       psi_inv = psi_inv, X = X_dmy, XX = NULL, Y = Y_dmy, b = b,
       beta_hat = FALSE)
     log_ml <- log_ml - calc_logml(M = M, N = N_dummy, psi = psi,
-      omega_ml_ev = ev_dummy[["omega"]], psi_ml_ev = ev_dummy[["psi"]])
+      omega_ldet = ev_dummy[["omega"]], psi_ldet = ev_dummy[["psi"]])
   }
 
 

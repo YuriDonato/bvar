@@ -279,8 +279,8 @@ bvar <- function(
 
   # Alternative
   if(mh[["scale_hess"]][1] == 420) {
-    cat("Using inverse Hessian.\n")
-    H <- solve(-opt$hessian)
+    cat("Using inverse Hessian to scale proposals.\n")
+    H <- chol2inv(chol(-opt$hessian))
     HH <- H
   }
 
