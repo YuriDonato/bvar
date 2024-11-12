@@ -242,7 +242,7 @@ bvar <- function(
     hyper_min = hyper_min, hyper_max = hyper_max, pars = pars_full,
     priors = priors, Y = Y, X = X, XX = XX, K = K, M = M, N = N, lags = lags,
     opt = TRUE, method = "L-BFGS-B", lower = hyper_min, upper = hyper_max,
-    control = list("fnscale" = -1))
+    control = list("fnscale" = -1), hessian = TRUE)
 
   names(opt[["par"]]) <- names(hyper)
 
@@ -264,6 +264,7 @@ bvar <- function(
   }
 
   H <- diag(length(opt[["par"]])) * mh[["scale_hess"]]
+
   J <- unlist(lapply(names(hyper), function(name) {
     exp(opt[["par"]][[name]]) / (1 + exp(opt[["par"]][[name]])) ^ 2 *
       (priors[[name]][["max"]] - priors[[name]][["min"]])
@@ -275,6 +276,13 @@ bvar <- function(
   }
   if(hyper_n != 1) {J <- diag(J)}
   HH <- J %*% H %*% t(J)
+
+  # Alternative
+  if(mh[["scale_hess"]][1] == 420) {
+    cat("Using inverse Hessian.\n")
+    H <- solve(-opt$hessian)
+    HH <- H
+  }
 
   # Make sure HH is positive definite
   if(hyper_n != 1) {

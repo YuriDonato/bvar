@@ -73,7 +73,6 @@
 "NONREVSL","log-2nd-diff",
 "CONSPI","1st-diff",
 "SP500","log-diff",
-"SPINDUST","log-diff",
 "SPDIVYIELD","1st-diff",
 "SPPERATIO","log-diff",
 "FEDFUNDS","1st-diff","1st-diff"
@@ -276,6 +275,5 @@
 "TNWBSNNBBDIx",,"1st-diff"
 "CNCFx",,"log-diff"
 "S.P.500",,"log-diff"
-"S.P..indust",,"log-diff"
 "S.P.div.yield",,"1st-diff"
 "S.P.PE.ratio",,"log-diff"

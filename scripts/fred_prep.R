@@ -3,7 +3,7 @@
 
 keep <- readLines("data/fred_permitted.txt")
 
-file <- "2023-10.csv" # Update this
+file <- "2024-10.csv" # Update this
 
 
 # QD ---
@@ -64,10 +64,11 @@ fred_md$sasdate <- NULL
 
 # Adjust S&P 500 names
 names(fred_md)[grep("S[.]P", names(fred_md))]
+# "SPINDUST" dropped from 2023-10 to 2024-10; rm'd as we don't keep them anyways
 names(fred_md)[grep("S[.]P", names(fred_md))] <-
-  c("SP500", "SPINDUST", "SPDIVYIELD", "SPPERATIO")
+  c("SP500", "SPDIVYIELD", "SPPERATIO")
 names(fred_md_trans)[grep("S[.]P", names(fred_md_trans))] <-
-  c("SP500", "SPINDUST", "SPDIVYIELD", "SPPERATIO")
+  c("SP500", "SPDIVYIELD", "SPPERATIO")
 # names(fred_md) <- toupper(names(fred_md))
 # names(fred_md_trans) <- toupper(names(fred_md_trans))
 
