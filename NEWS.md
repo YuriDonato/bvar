@@ -1,3 +1,9 @@
+# v1.0.6, CRAN Update 11
+
+- **Add `shock_override`** argument to `hist_decomp()`  
+  Users can now pass a user-provided structural shock vector/matrix (e.g. from a sign-restricted identification) into the historical decomposition. Defaults to existing Cholesky identification when `shock_override = NULL`.
+- Update documentation and examples for the new `shock_override` feature.
+- Minor Roxygen and NAMESPACE improvements.
 
 # v1.0.5, CRAN Update 10
 - Add historical decompositions and RMSE/LPS, and WAIC for analysis
